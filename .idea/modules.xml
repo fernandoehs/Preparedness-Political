@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/starter.iml" filepath="$PROJECT_DIR$/.idea/modules/starter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/starter.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/starter.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Preparedness-Political.iml" filepath="$PROJECT_DIR$/.idea/modules/Preparedness-Political.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Preparedness-Political.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Preparedness-Political.app.iml" />
     </modules>
   </component>
 </project>

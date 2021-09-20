@@ -15,7 +15,10 @@ import com.example.android.politicalpreparedness.databinding.ViewholderRepresent
 import com.example.android.politicalpreparedness.network.models.Channel
 import com.example.android.politicalpreparedness.representative.model.Representative
 
-class RepresentativeListAdapter: ListAdapter<Representative, RepresentativeViewHolder>(RepresentativeDiffCallback()){
+class RepresentativeListAdapter :
+ListAdapter<Representative, RepresentativeListAdapter.RepresentativeViewHolder>(
+RepresentativeDiffCallback
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepresentativeViewHolder {
         return RepresentativeViewHolder.from(parent)
@@ -25,59 +28,86 @@ class RepresentativeListAdapter: ListAdapter<Representative, RepresentativeViewH
         val item = getItem(position)
         holder.bind(item)
     }
-}
 
-class RepresentativeViewHolder(val binding: ViewholderRepresentativeBinding): RecyclerView.ViewHolder(binding.root) {
+    class RepresentativeViewHolder(val binding: ViewholderRepresentativeBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: Representative) {
-        binding.representative = item
-        binding.representativePhoto.setImageResource(R.drawable.ic_profile)
+        fun bind(item: Representative) {
+            binding.representative = item
+            binding.representativePhoto.setImageResource(R.drawable.ic_profile)
 
-        //TODO: Show social links ** Hint: Use provided helper methods
-        //TODO: Show www link ** Hint: Use provided helper methods
+            //: Show social links ** Hint: Use provided helper methods
+            item.official.channels?.let { channels ->
+                showSocialLinks(channels)
+            }
 
-        binding.executePendingBindings()
-    }
+            //: Show www link ** Hint: Use provided helper methods
+            item.official.urls?.let { showWWWLinks(it) }
 
-    //TODO: Add companion object to inflate ViewHolder (from)
+            binding.executePendingBindings()
+        }
 
-    private fun showSocialLinks(channels: List<Channel>) {
-        val facebookUrl = getFacebookUrl(channels)
-        if (!facebookUrl.isNullOrBlank()) { enableLink(binding.facebookIcon, facebookUrl) }
+        companion object {
+            fun from(parent: ViewGroup): RepresentativeViewHolder {
+                val inflater = LayoutInflater.from(parent.context)
+                val view = ViewholderRepresentativeBinding.inflate(inflater, parent, false)
+                return RepresentativeViewHolder(view)
+            }
+        }
 
-        val twitterUrl = getTwitterUrl(channels)
-        if (!twitterUrl.isNullOrBlank()) { enableLink(binding.twitterIcon, twitterUrl) }
-    }
+        private fun showSocialLinks(channels: List<Channel>) {
+            val facebookUrl = getFacebookUrl(channels)
+            if (!facebookUrl.isNullOrBlank()) {
+                enableLink(binding.facebookIcon, facebookUrl)
+            }
 
-    private fun showWWWLinks(urls: List<String>) {
-        enableLink(binding.wwwIcon, urls.first())
-    }
+            val twitterUrl = getTwitterUrl(channels)
+            if (!twitterUrl.isNullOrBlank()) {
+                enableLink(binding.twitterIcon, twitterUrl)
+            }
+        }
 
-    private fun getFacebookUrl(channels: List<Channel>): String? {
-        return channels.filter { channel -> channel.type == "Facebook" }
+        private fun showWWWLinks(urls: List<String>) {
+            enableLink(binding.wwwIcon, urls.first())
+        }
+
+        private fun getFacebookUrl(channels: List<Channel>): String? {
+            return channels.filter { channel -> channel.type == "Facebook" }
                 .map { channel -> "https://www.facebook.com/${channel.id}" }
                 .firstOrNull()
-    }
+        }
 
-    private fun getTwitterUrl(channels: List<Channel>): String? {
-        return channels.filter { channel -> channel.type == "Twitter" }
+        private fun getTwitterUrl(channels: List<Channel>): String? {
+            return channels.filter { channel -> channel.type == "Twitter" }
                 .map { channel -> "https://www.twitter.com/${channel.id}" }
                 .firstOrNull()
+        }
+
+        private fun enableLink(view: ImageView, url: String) {
+            view.visibility = View.VISIBLE
+            view.setOnClickListener { setIntent(url) }
+        }
+
+        private fun setIntent(url: String) {
+            val uri = Uri.parse(url)
+            val intent = Intent(ACTION_VIEW, uri)
+            itemView.context.startActivity(intent)
+        }
     }
 
-    private fun enableLink(view: ImageView, url: String) {
-        view.visibility = View.VISIBLE
-        view.setOnClickListener { setIntent(url) }
-    }
+    companion object RepresentativeDiffCallback : DiffUtil.ItemCallback<Representative>() {
+        override fun areItemsTheSame(
+            oldItem: Representative,
+            newItem: Representative
+        ): Boolean {
+            return oldItem === newItem
+        }
 
-    private fun setIntent(url: String) {
-        val uri = Uri.parse(url)
-        val intent = Intent(ACTION_VIEW, uri)
-        itemView.context.startActivity(intent)
+        override fun areContentsTheSame(
+            oldItem: Representative,
+            newItem: Representative
+        ): Boolean {
+            return oldItem.official == newItem.official
+        }
     }
-
 }
-
-//TODO: Create RepresentativeDiffCallback
-
-//TODO: Create RepresentativeListener

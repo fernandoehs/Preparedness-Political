@@ -2,6 +2,14 @@
 <resources>
     <dimen name="default_padding">8dp</dimen>
 
-    <!-- TODO: Add necessary dimension values -->s
+    <dimen name="small_padding">4dp</dimen>
+    <dimen name="button_margin">12dp</dimen>
+
+    <!-- : Add necessary dimension values -->
+    <dimen name="profile_pic_size">60dp</dimen>
+    <dimen name="loading_img_size">96dp</dimen>
+    <dimen name="social_icon_size">28dp</dimen>
+
+    <dimen name="title_text_size">18sp</dimen>
 
 </resources>

@@ -12,11 +12,19 @@ import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.representative.model.Representative
 
 
+@BindingAdapter("representativeListData")
+fun bindRepresentativeRecyclerView(recyclerView: RecyclerView, data: List<Representative>?) {
+    data?.let {
+        val adapter = recyclerView.adapter as RepresentativeListAdapter
+        adapter.submitList(data)
+    }
+}
+
 @BindingAdapter("profileImage")
 fun fetchImage(view: ImageView, src: String?) {
     src?.let {
         val uri = src.toUri().buildUpon().scheme("https").build()
-        //TODO: Add Glide call to load image and circle crop - user ic_profile as a placeholder and for errors.
+        //: Glide call to load image and circle crop - user ic_profile as a placeholder and for errors.
         Glide.with(view.context)
             .load(uri)
             .apply(
@@ -24,6 +32,7 @@ fun fetchImage(view: ImageView, src: String?) {
                     .placeholder(R.drawable.loading_animation)
                     .error(R.drawable.ic_profile)
             )
+            .into(view)
     }
 }
 
@@ -39,14 +48,6 @@ fun Spinner.setNewValue(value: String?) {
     }
 }
 
-@BindingAdapter("representativeListData")
-fun bindRepresentativeRecyclerView(recyclerView: RecyclerView, data: List<Representative>?){
-    data?.let{
-        val adapter = recyclerView.adapter as RepresentativeListAdapter
-        adapter.submitList(data)
-    }
-}
-
-inline fun <reified T> toTypedAdapter(adapter: ArrayAdapter<*>): ArrayAdapter<T>{
+inline fun <reified T> toTypedAdapter(adapter: ArrayAdapter<*>): ArrayAdapter<T> {
     return adapter as ArrayAdapter<T>
 }
