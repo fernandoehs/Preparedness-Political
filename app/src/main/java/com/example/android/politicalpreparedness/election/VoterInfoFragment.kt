@@ -7,7 +7,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
+//import androidx.lifecycle.observe
 import com.example.android.politicalpreparedness.database.ElectionDatabase
 import com.example.android.politicalpreparedness.databinding.FragmentVoterInfoBinding
 
@@ -41,7 +41,7 @@ class VoterInfoFragment : Fragment() {
 
         binding.voterInfo = division
 
-        //: Handle loading of URLs
+
         viewModel.navigateToVotingUrl.observe(viewLifecycleOwner, {
             it?.let { votingLocationUrl ->
                 loadUrl(votingLocationUrl)
@@ -56,8 +56,7 @@ class VoterInfoFragment : Fragment() {
             }
         })
 
-        //: Handle save button UI state
-        //: cont'd Handle save button clicks
+
         binding.followBtn.setOnClickListener {
             viewModel.toggleButton()
         }
@@ -65,7 +64,7 @@ class VoterInfoFragment : Fragment() {
         return binding.root
     }
 
-    //: Create method to load URL intents
+
     private fun loadUrl(urlStr: String) {
         val uri: Uri = Uri.parse(urlStr)
         val intent = Intent(Intent.ACTION_VIEW, uri)

@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-//TODO: Construct ViewModel and provide election datasource
+
 class ElectionsViewModel(val database: ElectionDatabase) : ViewModel() {
 
     private val repository = ElectionRepository(database)
@@ -25,12 +25,10 @@ class ElectionsViewModel(val database: ElectionDatabase) : ViewModel() {
     val savedElections: LiveData<List<Election>?>
         get() = _savedElections
 
-    // To set visibility of list placeholder imageView
     private val _status = MutableLiveData<Constants.ApiStatus>()
     val status: LiveData<Constants.ApiStatus>
         get() = _status
 
-    // To set visibility of list placeholder textView
     private val _hasData = MutableLiveData<Boolean>()
     val hasData: LiveData<Boolean>
         get() = _hasData
@@ -40,7 +38,6 @@ class ElectionsViewModel(val database: ElectionDatabase) : ViewModel() {
         _hasData.value = false
     }
 
-    //: Create val and functions to populate live data for upcoming elections from the API and saved elections from local database
     private fun getUpcomingElectionsFromNetwork() {
         viewModelScope.launch {
             _status.value = Constants.ApiStatus.LOADING
@@ -70,7 +67,7 @@ class ElectionsViewModel(val database: ElectionDatabase) : ViewModel() {
         }
     }
 
-    //: Create functions to navigate to saved or upcoming election voter info
+
     private val _navigateToVoterInfoFragment = MutableLiveData<Election?>()
     val navigateToVoterInfoFragment: MutableLiveData<Election?>
         get() = _navigateToVoterInfoFragment

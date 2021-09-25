@@ -1,4 +1,4 @@
-package com.example.android.politicalpreparedness.utils
+package com.example.android.politicalpreparedness.election.adapter
 
 import android.view.View
 import android.widget.Button
@@ -7,8 +7,8 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.politicalpreparedness.R
-import com.example.android.politicalpreparedness.election.adapter.ElectionListAdapter
 import com.example.android.politicalpreparedness.network.models.Election
+import com.example.android.politicalpreparedness.utils.Constants
 import java.text.SimpleDateFormat
 import java.util.*
 

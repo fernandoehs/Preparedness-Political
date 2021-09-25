@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="election"
             type="com.example.android.politicalpreparedness.network.models.Election" />

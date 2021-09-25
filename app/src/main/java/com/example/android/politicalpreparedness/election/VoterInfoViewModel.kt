@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.android.politicalpreparedness.database.ElectionDao
+//import com.example.android.politicalpreparedness.database.ElectionDao
 import com.example.android.politicalpreparedness.database.ElectionDatabase
 import com.example.android.politicalpreparedness.network.models.Division
 import com.example.android.politicalpreparedness.network.models.State
@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 class VoterInfoViewModel(
     val id: Long,
     val division: Division,
-    private val dataSource: ElectionDatabase
+    dataSource: ElectionDatabase
 ) : ViewModel() {
     private val repository = ElectionRepository(dataSource)
     private val _errorMsg = MutableLiveData<String>()
@@ -58,7 +58,6 @@ class VoterInfoViewModel(
         }
     }
 
-    //: to support loading URLs
     private val _navigateToVotingUrl = MutableLiveData<String>()
     val navigateToVotingUrl: LiveData<String>
         get() = _navigateToVotingUrl
@@ -83,8 +82,6 @@ class VoterInfoViewModel(
         _navigateToBallotUrl.value = null
     }
 
-    //: Add var and methods to save and remove elections to local database
-    //: cont'd -- Populate initial state of save button to reflect proper action based on election saved status
     private val _isElectionSaved = MutableLiveData<Boolean>()
     val isElectionSaved: LiveData<Boolean>
         get() = _isElectionSaved

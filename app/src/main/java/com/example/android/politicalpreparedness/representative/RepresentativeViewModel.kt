@@ -12,10 +12,12 @@ import com.example.android.politicalpreparedness.network.models.Address
 import com.example.android.politicalpreparedness.repository.RepresentativeRepository
 import com.example.android.politicalpreparedness.representative.model.Representative
 import com.example.android.politicalpreparedness.utils.Constants
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
 class RepresentativeViewModel: ViewModel(), Observable {
 
     //TODO: Establish live data for representatives and address
@@ -42,6 +44,7 @@ class RepresentativeViewModel: ViewModel(), Observable {
     init {
         _hasData.value = false
     }
+
 
 
 

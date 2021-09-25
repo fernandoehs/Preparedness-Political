@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
+//import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.example.android.politicalpreparedness.database.ElectionDatabase
 import com.example.android.politicalpreparedness.databinding.FragmentElectionBinding
@@ -15,12 +15,12 @@ import com.example.android.politicalpreparedness.election.adapter.ElectionListen
 
 class ElectionsFragment: Fragment() {
 
-    //TODO: Declare ViewModel
+
     private lateinit var viewModel: ElectionsViewModel
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
 
         val database = ElectionDatabase.getInstance(requireContext())
         viewModel = ViewModelProvider(
@@ -64,7 +64,7 @@ class ElectionsFragment: Fragment() {
         super.onResume()
         viewModel.getAllSavedElectionsFromDB()
     }
-    //TODO: Refresh adapters when fragment loads
+
 
 
 }

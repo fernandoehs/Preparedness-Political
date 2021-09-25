@@ -28,9 +28,11 @@ import com.example.android.politicalpreparedness.representative.adapter.Represen
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import java.util.Locale
 
 class DetailFragment : Fragment() {
+    @ExperimentalCoroutinesApi
     private lateinit var viewModel: RepresentativeViewModel
     private lateinit var binding: FragmentRepresentativeBinding
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -44,6 +46,7 @@ class DetailFragment : Fragment() {
         private const val LOCATION_PERMISSION_INDEX = 0
         private const val BACKGROUND_LOCATION_PERMISSION_INDEX = 1
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -79,6 +82,7 @@ class DetailFragment : Fragment() {
         return binding.root
     }
 
+    @ExperimentalCoroutinesApi
     private fun handleOnItemSelectedListener(){
         binding.state.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -99,6 +103,7 @@ class DetailFragment : Fragment() {
             }
         }
     }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -122,7 +127,7 @@ class DetailFragment : Fragment() {
                 .setAction(R.string.settings) {
                     startActivity(Intent().apply {
                         action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                        data = Uri.fromParts("package", BuildConfig.APPLICATION_ID, null)
+                        data = Uri.fromParts("package",BuildConfig.APPLICATION_ID, null)
                         flags = Intent.FLAG_ACTIVITY_NEW_TASK
                     })
                 }.show()
@@ -131,6 +136,7 @@ class DetailFragment : Fragment() {
         }
     }
 
+    @ExperimentalCoroutinesApi
     private fun checkLocationPermissions(): Boolean {
         return if (isPermissionGranted()) {
             getLocation()
