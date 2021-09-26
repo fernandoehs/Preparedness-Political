@@ -43,7 +43,31 @@ To get started with this project, simply pull the repository and import the proj
 	* This will require edits to Gradle.
 	* You will need to create a file to complete the step.
 
+# ScreenShots
+<p float="left">
+  <img src="https://github.com/herreraweb/Location-Reminder/blob/main/starter/app/src/main/res/screenshots/Screenshot_2021-09-26-00-37-07-373_com.example.android.politicalpreparedness[1].jpg" width="170" />
+  <img src="https://github.com/herreraweb/Location-Reminder/blob/main/starter/app/src/main/res/drawable/sign_up.jpg" width="170" />
+  <img src="https://github.com/herreraweb/Location-Reminder/blob/main/starter/app/src/main/res/drawable/empty_screen.jpg" width="170" />
+
+</p>
+
+<p float="left">
+    
+   <img src="https://github.com/herreraweb/Location-Reminder/blob/main/starter/app/src/main/res/drawable/permission.jpg" width="170" />
+     <img src="https://github.com/herreraweb/Location-Reminder/blob/main/starter/app/src/main/res/drawable/map_view.jpg" width="170" />
+ 
+</p>
 
 
-## Report Issues
-Notice any issues with a repository? Please file a github issue in the repository.
+<p float="left">
+    <img src="https://github.com/herreraweb/Location-Reminder/blob/main/starter/app/src/main/res/drawable/pick_location.jpg" width="170" />
+ 
+   <img src="https://github.com/herreraweb/Location-Reminder/blob/main/starter/app/src/main/res/drawable/task_detail.jpg" width="170" />
+
+</p>
+
+
+# License
+This project is licensed under the Apache License 2.0 - see : https://www.apache.org/licenses/LICENSE-2.0.txt
+
+
