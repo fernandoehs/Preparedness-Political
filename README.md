@@ -45,7 +45,7 @@ To get started with this project, simply pull the repository and import the proj
 
 # ScreenShots
 <p float="left">
-  <img src="https://github.com/herreraweb/Location-Reminder/blob/main/starter/app/src/main/res/screenshots/Screenshot_2021-09-26-00-37-07-373_com.example.android.politicalpreparedness[1].jpg" width="170" />
+  <img src="https://github.com/herreraweb/Preparedness-Political/blob/main/screenshots/Screenshot_2021-09-26-00-37-07-373_com.example.android.politicalpreparedness%5B1%5D.jpg" width="170" />
   <img src="https://github.com/herreraweb/Location-Reminder/blob/main/starter/app/src/main/res/drawable/sign_up.jpg" width="170" />
   <img src="https://github.com/herreraweb/Location-Reminder/blob/main/starter/app/src/main/res/drawable/empty_screen.jpg" width="170" />
 
