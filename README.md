@@ -23,7 +23,7 @@ Components from the Jetpack library:
 
 <p float="left">
    <img src="https://github.com/herreraweb/Preparedness-Political/blob/main/screenshots/Screenshot_2021-09-26-00-41-47-245_com.example.android.politicalpreparedness%5B1%5D.jpg" width="170" />
-     <img src="https://github.com/herreraweb/Preparedness-Political/blob/main/screenshots/preparedness.gif" width="170" />
+     <img src="https://github.com/fernandoehs/AppBancaMovil-Prueba/blob/main/app.gif" width="170" />
 </p>
 
 
